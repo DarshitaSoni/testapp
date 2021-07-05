@@ -1,0 +1,71 @@
+<div id="div-bg" >
+  <div id="logreg-forms">
+    <form [formGroup]="editDetailForm" (ngSubmit)="onSubmit()" *ngIf="editDetailForm">
+      <h3>Edit Details</h3>
+      <div class="form-group ">
+        <input type="text" formControlName="name" (keypress)="onlyChar($event)" class="form-control"
+               placeholder="Name" [ngClass]="{ 'is-invalid': submitted &&
+               editDetailForm.controls.name.errors }" />
+        <span *ngIf="editDetailForm.get('name').invalid && (editDetailForm.get('name').dirty ||
+               editDetailForm.get('name').touched || submitted)" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.name.errors.required">Name is required</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="email" class="form-control" placeholder="Email"
+                [ngClass]="{ 'is-invalid': submitted && editDetailForm.controls.email.errors }" />
+        <span *ngIf="editDetailForm.get('email').invalid && (editDetailForm.get('email').dirty ||
+               editDetailForm.get('email').touched || submitted)" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.email.errors.required">Email is required</span>
+        </span>
+        <span *ngIf="submitted && editDetailForm.controls.email.errors" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.email.errors.pattern">Invalid email</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="contactNo" class="form-control" placeholder="contact no"
+                [ngClass]="{ 'is-invalid': submitted && editDetailForm.controls.contactNo.errors }"
+                (keypress)="onlyNumber($event)"/>
+          <span *ngIf="editDetailForm.get('contactNo').invalid && (editDetailForm.get('contactNo').dirty ||
+                 editDetailForm.get('contactNo').touched || submitted)" class="invalid-feedback">
+            <span *ngIf="editDetailForm.controls.contactNo.errors.required">contact number is required</span>
+          </span>
+          <span *ngIf="submitted && editDetailForm.controls.contactNo.errors" class="invalid-feedback">
+            <span *ngIf="editDetailForm.controls.contactNo.errors.pattern">only numbers are allowed</span>
+          </span>
+      </div>
+      <div class="form-group">
+        <input type="date" formControlName="dateOfBirth" class="form-control" placeholder="dateOfBirth"
+              [ngClass]="{ 'is-invalid': submitted && editDetailForm.controls.dateOfBirth.errors }" />
+        <span *ngIf="editDetailForm.get('dateOfBirth').invalid && (editDetailForm.get('dateOfBirth').dirty ||
+               editDetailForm.get('dateOfBirth').touched || submitted)" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.dateOfBirth.errors.required">Date of Birth is required</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <textarea type="text" formControlName="address" class="form-control" placeholder="address"
+                [ngClass]="{ 'is-invalid': submitted && editDetailForm.controls.address.errors }" >
+        </textarea>
+        <span *ngIf="editDetailForm.get('address').invalid && (editDetailForm.get('address').dirty ||
+               editDetailForm.get('address').touched || submitted)" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.address.errors.required">address is required</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <textarea type="text" formControlName="businessName" class="form-control" placeholder="Business Name"
+                [ngClass]="{ 'is-invalid': submitted && editDetailForm.controls.businessName.errors }"
+                (keypress)="onlyChar($event)">
+        </textarea>
+        <span *ngIf="editDetailForm.get('businessName').invalid && (editDetailForm.get('businessName').dirty ||
+               editDetailForm.get('businessName').touched || submitted)" class="invalid-feedback">
+          <span *ngIf="editDetailForm.controls.businessName.errors.required">Business Name is required</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary mr-1" type="submit">SAVE</button>
+        <button class="btn btn-primary mr-1" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
+

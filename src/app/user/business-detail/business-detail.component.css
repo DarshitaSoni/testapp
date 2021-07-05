@@ -1,0 +1,39 @@
+.form-control{
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.invalid-feedback{
+  color: red
+}
+.button {
+  background-color:rgb(72, 167, 72);
+  margin-left: 30%;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.remove-button {
+  background-color:rgb(240, 113, 113);
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 14px;
+}
+.add-button {
+  background-color:rgb(99, 148, 212);
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 14px;
+}

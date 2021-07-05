@@ -1,0 +1,36 @@
+<div class="mb-4"></div>
+<div class="mb-3">
+  <button type="button" class="btn btn-primary me-md-2" [routerLink]="['/user/personal_detail']">
+    <i class="bi bi-plus"></i>  New USer
+  </button>
+</div>
+<table class="table-sm table-hover table-responsive" border="1">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact No</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Address</th>
+      <th scope="col">Business Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of listUser ; let i = index;">
+      <th scope="row"></th>
+      <td> {{ user.name }} </td>
+      <td> {{ user.email }} </td>
+      <td> {{ user.contact_no }} </td>
+      <td> {{ user.date_of_birth }} </td>
+      <td> {{ user.address }} </td>
+      <td> {{ user.business_name }} </td>
+      <td>
+        <button class="btn btn-info mr-2" (click)="onUpdate(user)" >Update</button> |
+        <button type="button" class="btn btn-danger  mr-2" (click)="onDelete(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

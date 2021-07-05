@@ -1,0 +1,46 @@
+<form [formGroup]="businessDetailForm" (ngSubmit)="onSubmit()" *ngIf="businessDetailForm">
+  <h3>Company Details</h3>
+  <div class="mb-3">
+    <input type="text" class="form-control col-md-6" formControlName="businessName"
+            placeholder="Business Name" [ngClass]="{ 'is-invalid': submitted &&
+             businessDetailForm.controls.businessName.errors }" (keypress)="onlyChar($event)" />
+    <span *ngIf="businessDetailForm.get('businessName').invalid && (businessDetailForm.get('businessName').dirty ||
+           businessDetailForm.get('businessName').touched || submitted)" class="invalid-feedback">
+      <span *ngIf="businessDetailForm.controls.businessName.errors.required">Business Name is required</span>
+    </span>
+  </div>
+  <div class="card col-md-7 form-group">
+    <div formArrayName="buinessBranches" >
+      <div *ngFor="let businessBranch of buinessBranches.controls; let i = index;" [formGroupName]="i">
+        <h4>Business Branch {{i+1}}</h4>
+        <div>
+          <button class="remove-button" (click)="removeBranch(i)">Remove</button>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="area" placeholder="area"
+                 [ngClass]="{ 'is-invalid': submitted && businessBranch.get('area').errors }"/>
+          <span *ngIf="businessBranch.get('area').invalid && (businessBranch.get('area').dirty ||
+                 businessBranch.get('area').touched || submitted)" class="invalid-feedback">
+            <span *ngIf="businessBranch.get('area').errors['required']">area is required</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="contact" placeholder="contact"
+                 [ngClass]="{ 'is-invalid': submitted && businessBranch.get('contact').errors }"
+                 (keypress)="onlyNumber($event)" minlength="10" maxlength="10">
+          <span *ngIf="businessBranch.get('contact').invalid && (businessBranch.get('contact').dirty ||
+                 businessBranch.get('contact').touched || submitted)" class="invalid-feedback">
+            <span *ngIf="businessBranch.get('contact').errors['required']">contact is required</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <a class="add-button" (click)="addBranch()">Add Branch</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="button">Save</button>
+  </div>
+</form>
+
